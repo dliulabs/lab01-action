@@ -9,13 +9,11 @@ jobs:
         run: echo Passing step
       - name: Step is going to fail
         run: exit 1
-      - name: Step To run on failure
-        if: ${{ failure() }}
-        uses: JasonEtco/create-an-issue@v2
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - uses: nashmaniac/create-issue-action@v1.1
+        name: Create Issue Action
         with:
-          assignees: ${{ github.actor }}
-          milestone: 1
-          update_existing: true
-          search_existing: all
+          title: Build Failed
+          token: ${{secrets.GITHUB_TOKEN}}
+          assignees: ${{github.actor}}
+          labels: worflow-failed
+          body: Workflow failed for commit ${{github.sha}}
