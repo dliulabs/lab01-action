@@ -9,8 +9,8 @@ jobs:
       - name: "create my_string"
         run: |
           echo "MY_STRING<<EOF" >> $GITHUB_ENV
-          echo "Hello, $user_name!" >> $GITHUB_ENV
-          echo "Welcome to $demo_name!!!" >> $GITHUB_ENV
+          echo "Hello, ${{github.actor}}!" >> $GITHUB_ENV
+          echo "Welcome to ${{ github.repository }}!!!" >> $GITHUB_ENV
           echo "EOF" >> $GITHUB_ENV
         id: my_string
       - name: display string
