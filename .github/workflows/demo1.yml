@@ -1,9 +1,24 @@
-name: GitHub Actions Demo
-on: [push]
+name: GitHub Actions with Variables
+
+on:
+  pull_request:
+    branches: [main]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+ 
+env:
+  # define veriables
+  user_name: "GitHub User"
+  demo_name: "Variable Demo"
+  
 jobs:
   Explore-GitHub-Actions:
     runs-on: ubuntu-latest
     steps:
+      - name: Using Workflow Variables
+        run: echo Hello, $user_name!
+             Welcome to $demo_name!!!
       - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
       - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
       - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
