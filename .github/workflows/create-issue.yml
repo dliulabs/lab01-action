@@ -4,6 +4,7 @@ jobs:
   FailJobIssueDemo:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - name: Step is going to pass
         run: echo Passing step
       - name: Step is going to fail
