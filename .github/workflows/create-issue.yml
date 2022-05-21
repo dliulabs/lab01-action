@@ -9,8 +9,9 @@ jobs:
         run: echo Passing step
       - name: Step is going to fail
         run: exit 1
-      - uses: nashmaniac/create-issue-action@v1.1
-        name: Create Issue Action
+      - name: Step To run on failure
+        if: ${{ failure() }}
+        uses: nashmaniac/create-issue-action@v1.1
         with:
           title: Build Failed
           token: ${{secrets.GITHUB_TOKEN}}
